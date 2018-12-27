@@ -1,7 +1,13 @@
 node {
    def mvnHome
+   stage('Checkout repository') { 
+       bat('git clone https://github.com/brushtab/AWSpring.git "C:\\code\\repos\\AWSpring')
+   }
+   stage('Build repo') { 
+       bat('"C:\\code\\repos\\AWSpring\\gradlew build')
+   }
    stage('Copy on aws') { 
-       bat('"C:\\Program Files\\PuTTY\\pscp.exe" -load redhat-ec2 C:\\code\\repos\\SpringFramework\\gs-rest-service\\initial\\build\\libs\\gs-rest-service-0.1.0.jar ec2-user@ec2-54-93-236-98.eu-central-1.compute.amazonaws.com:/home/ec2-user/app')
+       bat('"C:\\Program Files\\PuTTY\\pscp.exe" -load redhat-ec2 C:\\code\\repos\\AWSpring\\build\\libs\\gs-rest-service-0.1.0.jar ec2-user@ec2-54-93-236-98.eu-central-1.compute.amazonaws.com:/home/ec2-user/app')
    }
    stage('Run') {
       bat('"C:\\Program Files\\PuTTY\\plink.exe" redhat-ec2 pkill -TERM -e java')
