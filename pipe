@@ -7,7 +7,8 @@ node {
 	   bat('del /F /Q C:\\code\\repos\\temp')
    }
    stage('Build repo') { 
-       bat('"C:\\code\\repos\\AWSpring\\gradlew build')
+	   bat('cd C:\\code\\repos\\AWSpring\\')
+       bat('C:\\code\\repos\\AWSpring\\gradlew build')
    }
    stage('Copy on aws') { 
        bat('"C:\\Program Files\\PuTTY\\pscp.exe" -load redhat-ec2 C:\\code\\repos\\AWSpring\\build\\libs\\gs-rest-service-0.1.0.jar ec2-user@ec2-54-93-236-98.eu-central-1.compute.amazonaws.com:/home/ec2-user/app')
