@@ -1,7 +1,9 @@
 node {
    def mvnHome
    stage('Checkout repository') { 
-       bat('git clone https://github.com/brushtab/AWSpring.git "C:\\code\\repos\\AWSpring')
+       bat('git clone https://github.com/brushtab/AWSpring.git C:\\code\\repos\\temp')
+	   bat('move C:\\code\\repos\\temp\\.git C:\\code\\AWSpring\\temp\\.git')
+	   bat('del C:\\code\\repos\\temp')
    }
    stage('Build repo') { 
        bat('"C:\\code\\repos\\AWSpring\\gradlew build')
