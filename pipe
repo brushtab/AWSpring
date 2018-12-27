@@ -5,7 +5,7 @@ node {
    }
    stage('Run') {
       bat('"C:\\Program Files\\PuTTY\\plink.exe" redhat-ec2 pkill -TERM -e java')
-	  bat('"C:\\Program Files\\PuTTY\\plink.exe" redhat-ec2 nohup java -jar /home/ec2-user/app/gs-rest-service-0.1.0.jar > /home/ec2-user/app/log/app.log 2 > /home/ec2-user/app/log/err.log &')
+	  bat('"C:\\Program Files\\PuTTY\\plink.exe" redhat-ec2 "nohup java -jar /home/ec2-user/app/gs-rest-service-0.1.0.jar > /home/ec2-user/app/log/app.log 2 > /home/ec2-user/app/log/err.log &"')
    }
    stage('Results') {
       
