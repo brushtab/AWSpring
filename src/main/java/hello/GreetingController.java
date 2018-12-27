@@ -24,4 +24,10 @@ public class GreetingController {
         return new Greeting(counter.incrementAndGet(),
                             String.format(templatePOST, name));
     }
+
+    @RequestMapping(path="/sayhey", method=RequestMethod.POST)
+    public Greeting sayHey(@RequestParam(value="name", defaultValue="Eugene Efimenko") String name) {
+        return new Greeting(counter.incrementAndGet(),
+                            String.format(templatePOST, name));
+    }
 }
