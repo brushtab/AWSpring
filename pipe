@@ -1,10 +1,10 @@
 node {
 
    stage('Checkout repository') { 
-	   bat('del /F /Q C:\\code\\repos\\temp')
+	   bat('rmdir /S /Q C:\\code\\repos\\temp')
        bat('git clone https://github.com/brushtab/AWSpring.git C:\\code\\repos\\temp')
 	   bat('xcopy /H /Y C:\\code\\repos\\temp\\.git C:\\code\\repos\\AWSpring')
-	   bat('del /F /Q C:\\code\\repos\\temp')
+	   bat('rmdir /S /Q C:\\code\\repos\\temp')
    }
    stage('Build repo') { 
 	   bat('C:\\code\\repos\\AWSpring\\gradlew build -p C:\\code\\repos\\AWSpring')
