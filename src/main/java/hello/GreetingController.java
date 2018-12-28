@@ -38,7 +38,7 @@ public class GreetingController {
     }
 
     @RequestMapping(path="/git", method=RequestMethod.GET)
-    public Greeting git(@RequestParam(value="name", defaultValue="Eugene Efimenko, you made Get!") String name) {
+    public Greeting git(@RequestParam(value="name", defaultValue="Hello bro") String name) {
         return new Greeting(counter.incrementAndGet(),
                             String.format(templatePOST, name));
     }
